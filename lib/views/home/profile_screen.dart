@@ -353,6 +353,7 @@
 
 
 
+import 'package:brubla_tailor/views/profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -446,24 +447,30 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisSpacing: 12,
                   childAspectRatio: 3,
                   physics: const NeverScrollableScrollPhysics(),
-                  children: const [
+                  children:  [
                     _ActionButton(
                         label: 'Orders',
                         icon: Icons.receipt_long_outlined),
-                    _ActionButton(
-                        label: 'BMI',
-                        icon: Icons.monitor_weight_outlined),
+                  
                     _ActionButton(
                         label: 'Help', icon: Icons.help_outline),
-                    _ActionButton(
-                        label: 'Coupons',
-                        icon: Icons.local_offer_outlined),
+                   // 2. Replace the GestureDetector block with this:
+_ActionButton(
+  label: 'Profile',
+  icon: Icons.person,
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => EditProfile()),
+    );
+  },
+),
                     _ActionButton(
                         label: 'Address',
                         icon: Icons.location_on_outlined),
-                    _ActionButton(
-                        label: 'Wishlist',
-                        icon: Icons.favorite_border),
+                    // _ActionButton(
+                    //     label: 'Wishlist',
+                    //     icon: Icons.favorite_border),
                   ],
                 ),
               ),
@@ -615,13 +622,14 @@ class ProfileScreen extends StatelessWidget {
 class _ActionButton extends StatelessWidget {
   final String label;
   final IconData icon;
+   final VoidCallback? onTap;
 
-  const _ActionButton({required this.label, required this.icon});
+  const _ActionButton({required this.label, required this.icon,this.onTap,});
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: onTap ?? () {}, // U,
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.black,
         side: const BorderSide(color: Colors.black, width: 1.2),
