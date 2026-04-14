@@ -1,4 +1,5 @@
 import 'package:brubla_tailor/views/home/profile_screen.dart';
+import 'package:brubla_tailor/views/notifications/notifications.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -133,7 +134,9 @@ class _HomeScreenState extends State<HomeScreen>
       actions: [
         IconButton(
           icon: const Icon(Icons.notifications_outlined, color: Colors.white),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>Notifications()));
+          },
         ),
         Padding(
           padding: const EdgeInsets.only(right: 12),
